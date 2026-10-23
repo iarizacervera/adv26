@@ -32,7 +32,6 @@ window.ADVIENTO = {
   dias: {
     1: {
       tipo: "mensaje",
-      titulo: "Instrucciones",
       texto: [
         "Buenos días amor.",
         "Me imagino que después de un par de semanas ya tendrías ganas de saber lo que hay dentro de la caja... También imagino que diciéndote que no podrías abrirla hasta el 1 de diciembre, algo te habrás olido ya...",

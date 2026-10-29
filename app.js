@@ -6,7 +6,7 @@
   var DIAS = C.dias || {};
   var FIRMA = C.firma || "";
   var TIPOS = { mensaje: "Una carta", sobre: "Del paquete", post: "Encontrado para ti", video: "Un vídeo",
-                preguntas: "Para conocernos", quiz: "Un juego", memoria: "Un juego" };
+                preguntas: "Para conocernos", quiz: "Un juego", memoria: "Un juego", historia: "Una historia" };
   var SEMANA = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
 
   function $(s) { return document.querySelector(s); }
@@ -87,6 +87,22 @@
       (f.src ? '<img src="' + esc(f.src) + '" alt="' + esc(f.pie || "Foto") + '" loading="lazy">' : '<span class="ph">Aquí irá una foto</span>') +
       (f.pie ? "<figcaption>" + esc(f.pie) + "</figcaption>" : "") + "</figure>";
   }
+  /* historia: texto y fotos mezclados, sin marco */
+  function imgLibre(src, pie) {
+    return '<img src="' + esc(src) + '" alt="' + esc(pie || "Foto") + '" loading="lazy">';
+  }
+  function bloque(b) {
+    if (typeof b === "string") return '<p class="h-txt">' + esc(b) + "</p>";
+    var s = "";
+    if (b.texto) s += (Array.isArray(b.texto) ? b.texto : [b.texto]).map(function (t) { return '<p class="h-txt">' + esc(t) + "</p>"; }).join("");
+    if (b.titulo) s += '<h3 class="h-sub">' + esc(b.titulo) + "</h3>";
+    if (b.foto) s += '<figure class="h-foto">' + imgLibre(b.foto, b.pie) + (b.pie ? "<figcaption>" + esc(b.pie) + "</figcaption>" : "") + "</figure>";
+    if (b.fotos) s += '<div class="h-fotos">' + b.fotos.map(function (f) {
+      if (typeof f === "string") f = { src: f };
+      return '<figure class="h-foto">' + imgLibre(f.src, f.pie) + (f.pie ? "<figcaption>" + esc(f.pie) + "</figcaption>" : "") + "</figure>";
+    }).join("") + "</div>";
+    return s;
+  }
   function boton(url, txt, cls) { return '<a class="btn ' + (cls || "") + '" href="' + esc(url) + '" target="_blank" rel="noopener">' + esc(txt) + "</a>"; }
 
   function cuerpo(d) {
@@ -108,6 +124,8 @@
         return t + "<p>" + esc(d.intro || "") + '</p><div class="qcard" id="qc"></div>' +
           '<div class="qnav"><span class="qcount" id="qn"></span><span class="row" style="margin:0">' +
           '<button type="button" class="btn ghost" id="qp">Anterior</button><button type="button" class="btn" id="qx">Siguiente</button></span></div>';
+      case "historia":
+        return t + '<div class="historia' + (d.mano ? " mano" : "") + '">' + (d.bloques || []).map(bloque).join("") + "</div>";
       case "quiz":
         return t + '<div id="quiz"></div>';
       case "memoria":
@@ -119,7 +137,7 @@
   function extras(d) {
     var s = "";
     if (d.paquete && d.tipo !== "sobre") s += '<div class="stamp"><b>' + esc(d.paquete) + "</b><span>Y ahora, abre el sobre " + esc(d.paquete) + " del paquete.</span></div>";
-    var f = typeof d.firma === "string" ? d.firma : (d.firma === false ? "" : (["mensaje", "sobre", "video", "post"].indexOf(d.tipo || "mensaje") >= 0 ? FIRMA : ""));
+    var f = typeof d.firma === "string" ? d.firma : (d.firma === false ? "" : (["mensaje", "sobre", "video", "post", "historia"].indexOf(d.tipo || "mensaje") >= 0 ? FIRMA : ""));
     if (f) s += '<div class="sign">— ' + esc(f) + "</div>";
     return s;
   }

@@ -104,8 +104,16 @@ window.ADVIENTO = {
         { p: "¿Qué haría yo un domingo perfecto?", o: ["Fútbol y sofá", "Ir a la montaña", "Dormir hasta las 12", "Todo lo anterior"], ok: 3 }
       ],
       final: "Da igual la nota: me debes una respuesta a la pregunta que más te costó."
+    },
+    8: {
+      tipo: "historia",
+      // mano: true,   // descomenta para que el texto salga con letra a mano
+      bloques: [
+        "Todo empezó con un mensaje que yo no sabía cómo contestar.",
+        { foto: "fotos/ambrona.JPEG", pie: "Ese día, en esa calle" },
+        "Otro párrafo cualquiera.",
+      ]
     }
-
     // 8: { tipo: "mensaje", titulo: "...", texto: ["..."], fotos: [{ src: "fotos/dia08.jpg", pie: "..." }] },
   }
 };

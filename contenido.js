@@ -27,7 +27,7 @@
 
 window.ADVIENTO = {
   anio: 2026,
-  firma: "Isaac",
+  firma: "",
 
   dias: {
     1: {
@@ -36,7 +36,7 @@ window.ADVIENTO = {
         "Buenos días amor.",
         "Me imagino que después de un par de semanas ya tendrías ganas de saber lo que hay dentro de la caja... También imagino que diciéndote que no podrías abrirla hasta el 1 de diciembre, algo te habrás olido ya...",
         "Efectivamente, es un calendario de adviento. Lo primero de todo, aunque supongo que sabes como funciona, las instrucciones:",
-        "     · Como has visto, en la pantalla principal de la web hay 24 sobres con su número correspondiente. Cada día se irá desbloqueando uno. En principo, se desbloquean a partir de las 00:00 de cada día, pero puedes abrirlo cuando te apetezca.",
+        "     · Como has visto, en la pantalla principal de la web hay 24 sobres con su número correspondiente. Cada día se irá desbloqueando uno. En principio, se desbloquean a partir de las 00:00 de cada día, pero puedes abrirlo cuando te apetezca.",
         "     · Dentro de cada sobre habrá algo para ese día, prefiero no contarte que tipo de cosas hay para que sea más sorpresa.",
         "     · En el sobre de algunos días, te dirá que tienes que coger algo de la caja. MUY IMPORTANTE: no seas tramposa y no mires el resto de cosas que hay dentro. Lo sabré y tendremos problemas...",
         "No esperes gran cosa (que ya sabes como gasto y que futbolista no soy...) pero esperes que te guste y que se te hagan un poquito más amenos estos días tan especiales que no podemos vernos.",
@@ -113,7 +113,21 @@ window.ADVIENTO = {
         { foto: "fotos/ambrona.JPEG", pie: "Ese día, en esa calle" },
         "Otro párrafo cualquiera.",
       ]
-    }
+    },
+    9: {
+      tipo: "mensaje",
+      texto: [
+        "Buenos días amor.",
+        "Me imagino que después de un par de semanas ya tendrías ganas de saber lo que hay dentro de la caja... También imagino que diciéndote que no podrías abrirla hasta el 1 de diciembre, algo te habrás olido ya...",
+        "Efectivamente, es un calendario de adviento. Lo primero de todo, aunque supongo que sabes como funciona, las instrucciones:",
+        "     · Como has visto, en la pantalla principal de la web hay 24 sobres con su número correspondiente. Cada día se irá desbloqueando uno. En principo, se desbloquean a partir de las 00:00 de cada día, pero puedes abrirlo cuando te apetezca.",
+        "     · Dentro de cada sobre habrá algo para ese día, prefiero no contarte que tipo de cosas hay para que sea más sorpresa.",
+        "     · En el sobre de algunos días, te dirá que tienes que coger algo de la caja. MUY IMPORTANTE: no seas tramposa y no mires el resto de cosas que hay dentro. Lo sabré y tendremos problemas...",
+        "No esperes gran cosa (que ya sabes como gasto y que futbolista no soy...) pero esperes que te guste y que se te hagan un poquito más amenos estos días tan especiales que no podemos vernos.",
+        "Son nuestras primeras Navidades juntos y, aunque no podamos vernos tanto como nos gustaría, quería que tuvieras un recuerdo bonito de ellas. Tengo claro que eres la chica con la que quiero pasar todas las Navidades que me queden.",
+        "Te quiero mucho Marina, eres la ilusión de mi vida."
+      ]
+    },
     // 8: { tipo: "mensaje", titulo: "...", texto: ["..."], fotos: [{ src: "fotos/dia08.jpg", pie: "..." }] },
   }
 };

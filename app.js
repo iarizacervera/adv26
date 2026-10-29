@@ -79,7 +79,13 @@
   }
 
   /* ---- contenido de cada día ---- */
-  function parrafos(a) { return (a || []).map(function (t) { return "<p>" + esc(t) + "</p>"; }).join(""); }
+  /* Un párrafo que empieza por · • - o * (con o sin espacios delante) se pinta como elemento de lista */
+  function par(t, cls) {
+    var m = String(t).match(/^\s*[·•\-–*]\s+([\s\S]*)$/);
+    if (m) return '<p class="li' + (cls ? " " + cls : "") + '">' + esc(m[1]) + "</p>";
+    return "<p" + (cls ? ' class="' + cls + '"' : "") + ">" + esc(t) + "</p>";
+  }
+  function parrafos(a) { return (a || []).map(function (t) { return par(t); }).join(""); }
   function foto(f, i) {
     if (typeof f === "string") f = { src: f };
     f = f || {};
@@ -92,9 +98,9 @@
     return '<img src="' + esc(src) + '" alt="' + esc(pie || "Foto") + '" loading="lazy">';
   }
   function bloque(b) {
-    if (typeof b === "string") return '<p class="h-txt">' + esc(b) + "</p>";
+    if (typeof b === "string") return par(b, "h-txt");
     var s = "";
-    if (b.texto) s += (Array.isArray(b.texto) ? b.texto : [b.texto]).map(function (t) { return '<p class="h-txt">' + esc(t) + "</p>"; }).join("");
+    if (b.texto) s += (Array.isArray(b.texto) ? b.texto : [b.texto]).map(function (t) { return par(t, "h-txt"); }).join("");
     if (b.titulo) s += '<h3 class="h-sub">' + esc(b.titulo) + "</h3>";
     if (b.foto) s += '<figure class="h-foto">' + imgLibre(b.foto, b.pie) + (b.pie ? "<figcaption>" + esc(b.pie) + "</figcaption>" : "") + "</figure>";
     if (b.fotos) s += '<div class="h-fotos">' + b.fotos.map(function (f) {
@@ -142,6 +148,13 @@
     return s;
   }
 
+  /* sangría en la primera línea de cada párrafo (solo en días de texto) */
+  function conSangria(d) {
+    var tipo = d.tipo || "mensaje";
+    if (["mensaje", "sobre", "post", "video", "historia"].indexOf(tipo) < 0) return false;
+    return d.sangria != null ? !!d.sangria : !!C.sangria;
+  }
+
   var scrollInicio = 0, desdeInicio = false;
   function mostrarDia(n) {
     if (!$("#inicio").hidden) scrollInicio = window.scrollY;
@@ -152,7 +165,7 @@
       '<button type="button" class="navb" id="ant" aria-label="Día anterior"' + (prev ? "" : " disabled") + ">‹</button>" +
       '<span class="navd">' + n + " dic</span>" +
       '<button type="button" class="navb" id="sig" aria-label="Día siguiente"' + (next ? "" : " disabled") + ">›</button></div></div>" +
-      '<article class="sheet"><header class="dayhead"><span class="d">' + n + '</span><span class="k">' + esc(TIPOS[d.tipo] || TIPOS.mensaje) + "<br>" + fecha(n) + "</span></header>" +
+      '<article class="sheet' + (conSangria(d) ? " sangria" : "") + '"><header class="dayhead"><span class="d">' + n + '</span><span class="k">' + esc(TIPOS[d.tipo] || TIPOS.mensaje) + "<br>" + fecha(n) + "</span></header>" +
       cuerpo(d) + extras(d) + "</article>";
     $("#inicio").hidden = true; $("#dia").hidden = false; window.scrollTo(0, 0);
     $("#volver").onclick = volver;

@@ -30,7 +30,7 @@ window.ADVIENTO = {
   firma: "",
 
   dias: {
-    1: {
+    1: { // Intro
       tipo: "mensaje",
       texto: [
         "Buenos días amor.",
@@ -45,7 +45,7 @@ window.ADVIENTO = {
       ]
     },
 
-    2: {
+    2: { // Preguntas para conocernos mejor
       tipo: "preguntas",
       titulo: "Preguntas para conocernos mejor",
       intro: "Esta noche, en la llamada, contestamos los dos. Pasa a la siguiente cuando terminemos cada una.",
@@ -58,12 +58,12 @@ window.ADVIENTO = {
       ]
     },
 
-    3: {
+    3: { // Peluche burrito
       tipo: "sobre",
-      numero: 1,
+      numero: 3,
       titulo: "Hoy toca paquete",
       texto: [
-        "Ve al paquete y busca el sobre con el número 1.",
+        "Ve al paquete y busca el sobre con el número 3.",
         "Los demás, quietos hasta su día 😉"
       ]
     },
@@ -103,7 +103,12 @@ window.ADVIENTO = {
         { p: "¿Dónde fue nuestra primera cita?", o: ["En un bar", "En el cine", "Paseando", "En un restaurante"], ok: 2 },
         { p: "¿Qué haría yo un domingo perfecto?", o: ["Fútbol y sofá", "Ir a la montaña", "Dormir hasta las 12", "Todo lo anterior"], ok: 3 }
       ],
-      final: "Da igual la nota: me debes una respuesta a la pregunta que más te costó."
+      finales: [
+        { desde: 0, texto: "Cero aciertos... Vamos a tener que pasar más tiempo juntos." },
+        { desde: 1, texto: "Uno solo. Aún estás a tiempo de ponerte las pilas." },
+        { desde: 2, texto: "Casi perfecto. Se nota que me prestas atención." },
+        { desde: 3, texto: "Pleno. Me conoces mejor que yo mismo." }
+      ]
     },
     8: {
       tipo: "historia",
@@ -114,18 +119,27 @@ window.ADVIENTO = {
         "Otro párrafo cualquiera.",
       ]
     },
-    9: {
+    9: { // Recuerdos
       tipo: "mensaje",
       texto: [
         "Buenos días amor.",
-        "Me imagino que después de un par de semanas ya tendrías ganas de saber lo que hay dentro de la caja... También imagino que diciéndote que no podrías abrirla hasta el 1 de diciembre, algo te habrás olido ya...",
-        "Efectivamente, es un calendario de adviento. Lo primero de todo, aunque supongo que sabes como funciona, las instrucciones:",
-        "     · Como has visto, en la pantalla principal de la web hay 24 sobres con su número correspondiente. Cada día se irá desbloqueando uno. En principo, se desbloquean a partir de las 00:00 de cada día, pero puedes abrirlo cuando te apetezca.",
-        "     · Dentro de cada sobre habrá algo para ese día, prefiero no contarte que tipo de cosas hay para que sea más sorpresa.",
-        "     · En el sobre de algunos días, te dirá que tienes que coger algo de la caja. MUY IMPORTANTE: no seas tramposa y no mires el resto de cosas que hay dentro. Lo sabré y tendremos problemas...",
-        "No esperes gran cosa (que ya sabes como gasto y que futbolista no soy...) pero esperes que te guste y que se te hagan un poquito más amenos estos días tan especiales que no podemos vernos.",
-        "Son nuestras primeras Navidades juntos y, aunque no podamos vernos tanto como nos gustaría, quería que tuvieras un recuerdo bonito de ellas. Tengo claro que eres la chica con la que quiero pasar todas las Navidades que me queden.",
-        "Te quiero mucho Marina, eres la ilusión de mi vida."
+        "Una cosa que me gusta mucho (que igual te parece un problemita) es guardar todo tipo de recuerdos de las cosas que hago o de los sitios que visito. Por ejempl, siempre guardo un mapa turístico de las ciudades que visito.",
+        "Pues ahora quiero hacerlo contigo. Eres la persona con la que quiero pasar el resto de mi vida y tengo pensado documentarlo todo, aunque suponga tener miles de cajas en casa con recuerdos juntos.",
+        "La tarea de hoy consiste en pensar juntos como lo vamos a hacer. Tienes que pensarte cómo te gustaría hacerlo a ti. Te dejo algunas ideas, aunque fijo que las tuyas son mejores:",
+        "· Comprar una postal en cada sitio que vayamos y hacer un álbum.",
+        "· Comprar un imán para la nevera (como verás soy suuuuuuuuper original).",
+        "· Posar de alguna manera especial para hacernos una foto juntos y luego montar un vídeo.",
+        "Esta noche nos llamamos y me cuentas que has pensado. Que vaya muy bien el día amor, te quiero con locura.",
+      ]
+    },
+
+    10: { // Libro
+      tipo: "sobre",
+      numero: 10,
+      titulo: "Hoy toca paquete",
+      texto: [
+        "Ve al paquete y busca el sobre con el número 10.",
+        "Los demás, quietos hasta su día 😉"
       ]
     },
     // 8: { tipo: "mensaje", titulo: "...", texto: ["..."], fotos: [{ src: "fotos/dia08.jpg", pie: "..." }] },

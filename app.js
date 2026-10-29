@@ -191,11 +191,20 @@
     x.onclick = function () { i = (i + 1) % q.length; draw(); };
     draw();
   }
+  /* mensaje final según la nota: finales = [{ desde: 0, texto: "..." }, { desde: 2, texto: "..." }]
+     sale el de mayor "desde" que no supere la nota. Si no hay finales, se usa "final". */
+  function mensajeFinal(d, score) {
+    var best = null;
+    (d.finales || []).forEach(function (f) {
+      if (f.desde <= score && (!best || f.desde > best.desde)) best = f;
+    });
+    return best ? best.texto : (d.final || "");
+  }
   function quiz(d) {
     var box = $("#quiz"), i = 0, score = 0, Q = d.preguntas || [];
     function draw() {
       if (i >= Q.length) {
-        box.innerHTML = '<div class="bigno" style="font-size:72px">' + score + "/" + Q.length + '</div><div class="reveal hand">' + esc(d.final || "") +
+        box.innerHTML = '<div class="bigno" style="font-size:72px">' + score + "/" + Q.length + '</div><div class="reveal hand">' + esc(mensajeFinal(d, score)) +
           '</div><div class="row" style="margin-top:14px"><button type="button" class="btn ghost" id="qr">Repetir</button></div>';
         $("#qr").onclick = function () { i = 0; score = 0; draw(); };
         return;
